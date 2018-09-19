@@ -33,7 +33,7 @@ export default class App extends React.Component<Props, State> {
     const newNode = { id: `region-${+new Date()}`, type: TYPE.UNUSED_REGION };
     const targetNode = this.data.nodes.find(x => x.id === "TiKV-2");
     if (!targetNode) {
-      throw new Error("Could not found TiKV-3 node, please check mock.json");
+      throw new Error("Could not found TiKV-2 node, please check mock.json");
     }
     this.data.nodes.push(newNode);
     this.data.links.push({ source: newNode, target: targetNode, value: 5 });
