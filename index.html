@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TiDB vis</title>
+    <style>
+        .operation {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 200px;
+            min-height: 200px;
+            background: rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+        }
+
+        svg {
+            border: 1px solid #ccc;
+        }
+
+        @keyframes raftingFrames {
+            from {
+                opacity: 0.5;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        .rafting {
+            animation-duration: 1024ms;
+            animation-fill-mode: both;
+            animation-iteration-count: 5;
+            animation-name: raftingFrames;
+        }
+    </style>
+</head>
+<body>
+
+<div class="operation">
+    <button id="js-add-region">Add Region</button>
+    <button id="js-to-rafting">Rafting</button>
+</div>
+<div class="tips"></div>
+
+<svg width="1000" height="600"></svg>
+
+<script src="./src/index.ts"></script>
+</body>
+</html>
