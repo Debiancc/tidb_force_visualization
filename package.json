@@ -16,8 +16,7 @@
   },
   "scripts": {
     "dev": "./node_modules/.bin/parcel index.html",
-    "build": "./node_modules/.bin/parcel build index.html",
-    "precommit": "pretty-quick --staged"
+    "build": "./node_modules/.bin/parcel build index.html"
   },
   "repository": {
     "type": "git",
@@ -28,5 +27,10 @@
   "bugs": {
     "url": "https://github.com/Debiancc/tidb_force_visualization/issues"
   },
-  "homepage": "https://github.com/Debiancc/tidb_force_visualization#readme"
+  "homepage": "https://github.com/Debiancc/tidb_force_visualization#readme",
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  }
 }
