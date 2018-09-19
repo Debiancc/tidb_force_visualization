@@ -1,3 +1,18 @@
+@keyframes raftingFrames {
+  from {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, PingFang SC, Helvetica, Tahoma,
+    Arial, "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", SimSun, "宋体",
+    Heiti, "黑体", sans-serif;
+}
+
 .operation {
   position: fixed;
   top: 0;
@@ -8,18 +23,39 @@
   overflow: hidden;
 }
 
+.tips {
+  position: absolute;
+  background: rgba(14, 65, 148, 0.33);
+  z-index: -1;
+  padding: 10px;
+  .row {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+  }
+  .point,
+  .text {
+    display: inline-block;
+  }
+  .text {
+    font-size: 12px;
+  }
+  .point {
+    width: 30px;
+    //margin-right: 10px;
+    & > div {
+      border-radius: 50px;
+      margin: 0 auto;
+    }
+  }
+  .text {
+  }
+}
+
 svg {
   border: 1px solid #ccc;
 }
 
-@keyframes raftingFrames {
-  from {
-    opacity: 0.5;
-  }
-  to {
-    opacity: 1;
-  }
-}
 .rafting {
   animation-duration: 1024ms;
   animation-fill-mode: both;

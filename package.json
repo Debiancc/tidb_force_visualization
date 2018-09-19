@@ -5,9 +5,13 @@
   "dependencies": {
     "d3": "^5.7.0",
     "lodash": "^4.17.11",
-    "normalize.css": "^8.0.0"
+    "normalize.css": "^8.0.0",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2"
   },
   "devDependencies": {
+    "@types/react": "^16.4.14",
+    "@types/react-dom": "^16.0.7",
     "@types/d3": "^5.0.0",
     "@types/lodash": "^4.14.116",
     "husky": "^1.0.0-rc.14",
