@@ -7,8 +7,10 @@
 
 - [x] TiDB & PD & TiKV 节点分布关系可视化
 - [x] 不同节点流量大小体现
+- [x] 集群节点在线/离线
 - [x] TiKV Leader Regions 选举过程
 - [x] TiKV 动态添加 Region
+- [ ] TiKV Region 同步 & 迁移 可视化
 - [ ] TiKV Region 同步 & 迁移 可视化
 
 ## How To Run
