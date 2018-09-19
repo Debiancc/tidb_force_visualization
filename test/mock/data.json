@@ -1,6 +1,5 @@
 {
   "nodes": [
-    { "id": "Clients", "type": "client" },
     { "id": "TiDB-1", "type": "tidb_instance" },
     { "id": "TiDB-2", "type": "tidb_instance" },
     { "id": "PD-1", "type": "pd_instance" },
