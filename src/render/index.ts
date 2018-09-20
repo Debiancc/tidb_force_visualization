@@ -79,7 +79,7 @@ export default class Render {
           d3
             .drag<SVGCircleElement, NodeData>()
             .on("start", d => {
-              if (!d3.event.active) this.simulation.alphaTarget(1).restart();
+              if (!d3.event.active) this.simulation.alphaTarget(0.1).restart();
               d.fx = d.x;
               d.fy = d.y;
             })
@@ -94,7 +94,7 @@ export default class Render {
             })
         )
         .on("click", (self, index, nodes) => {
-          if (!d3.event.active) this.simulation.alphaTarget(1).restart();
+          if (!d3.event.active) this.simulation.alphaTarget(0.1).restart();
           // @ts-ignore
           self.fx = nodes[0].__data__.x;
           // @ts-ignore
