@@ -63,11 +63,25 @@ export default class App extends React.Component<Props, State> {
     }, 1024 * 5);
   };
 
+  handleRegionSyncButtonClick = () => {
+    const target = this.data.nodes.find(x => x.id === "TiKV-2-Region-1");
+    const source = this.data.nodes.find(x => x.id === "TiKV-1-Region-1");
+    if (target && source) {
+      this.renderHelper.data.links.push({ source, target, value: 5 });
+      setTimeout(() => {
+        this.renderHelper.data.links.pop();
+      }, 1000);
+    }
+  };
+
   render() {
     return (
       <React.Fragment>
         <div className="operation">
           <button onClick={this.handleAddRegionButtonClick}>Add Region</button>
+          <button onClick={this.handleRegionSyncButtonClick}>
+            Region sync
+          </button>
           <button onClick={this.handleRaftingButtonClick}>Rafting</button>
         </div>
         <Tips />

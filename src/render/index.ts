@@ -17,6 +17,7 @@ import * as d3 from "d3";
 export default class Render {
   constructor(svgSelector: string, data: Data, width: number, height: number) {
     this.data = this.watch<Data>(data);
+    // this.data = data;
     this.width = width;
     this.height = height;
     this.svgElement = d3.select(svgSelector);
@@ -42,8 +43,9 @@ export default class Render {
         return value;
       },
       set: (target, key, value, receiver) => {
-        this.reflow();
-        return Reflect.set(target, key, value, receiver);
+        const success = Reflect.set(target, key, value, receiver);
+        success && this.reflow();
+        return success;
       }
     });
   };
