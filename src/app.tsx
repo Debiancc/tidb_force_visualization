@@ -1,9 +1,10 @@
 import React from "react";
 import * as d3 from "d3";
 import mockInput from "../test/mock/data.json";
-import { getColor, NodeData, TYPE, Data, getRadius } from "./utils/Constant";
+import { getColor, NodeData, TYPE, Data } from "./utils/Constant";
 import { random } from "lodash";
 import Render from "./render/index";
+import Tips from "./Tips";
 import "normalize.css";
 import "../style/index.scss";
 
@@ -69,29 +70,7 @@ export default class App extends React.Component<Props, State> {
           <button onClick={this.handleAddRegionButtonClick}>Add Region</button>
           <button onClick={this.handleRaftingButtonClick}>Rafting</button>
         </div>
-
-        <div className="tips">
-          {Object.keys(TYPE).map(type => {
-            // @ts-ignore
-            const _type = TYPE[type];
-            const color = getColor(null, _type);
-            const radius = getRadius(null, _type);
-            const pointStyle = {
-              width: radius * 2,
-              height: radius * 2,
-              backgroundColor: color
-            };
-            return (
-              <div className="row" key={`tips-row-${type}`}>
-                <div className="point">
-                  <div style={pointStyle} />
-                </div>
-                <div className="text">{type}</div>
-              </div>
-            );
-          })}
-        </div>
-
+        <Tips />
         <svg width="1000" height="600" />
       </React.Fragment>
     );
