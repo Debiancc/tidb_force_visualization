@@ -12,11 +12,11 @@ import * as d3 from "d3";
  * Render class
  * 对d3.force布局做了一些对开发友好的封装
  * 使得外部只需要操作instance.data里面的数据，调用reflow完成刷新
- * 后续优化方向可以使用observable监听data写入动作，隐式完成reflow
+ * [fixed]后续优化方向可以使用observable监听data写入动作，隐式完成reflow
  */
 export default class Render {
   constructor(svgSelector: string, data: Data, width: number, height: number) {
-    this.data = data;
+    this.data = this.watch<Data>(data);
     this.width = width;
     this.height = height;
     this.svgElement = d3.select(svgSelector);
@@ -31,6 +31,22 @@ export default class Render {
   private readonly svgElement: d3.Selection<SVGElement, null, HTMLElement, any>;
   private readonly width: number;
   private readonly height: number;
+
+  private watch = <T extends {}>(obj: T): T => {
+    return new Proxy(obj, {
+      get: (target, key, receiver) => {
+        const value = Reflect.get(target, key, receiver);
+        if (Array.isArray(value)) {
+          return this.watch(value);
+        }
+        return value;
+      },
+      set: (target, key, value, receiver) => {
+        this.reflow();
+        return Reflect.set(target, key, value, receiver);
+      }
+    });
+  };
 
   private initNode = () => {
     return {
@@ -97,7 +113,7 @@ export default class Render {
           .id(d => d.id)
           .distance(20)
       )
-      .force("charge_force", d3.forceManyBody().strength(-200))
+      .force("charge_force", d3.forceManyBody().strength(-100))
       .force("center", d3.forceCenter(this.width / 2, this.height / 2))
       .on("tick", () => {
         if (!this.svgChilds.link || !this.svgChilds.node) return;

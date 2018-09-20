@@ -18,10 +18,11 @@ export default class App extends React.Component<Props, State> {
       links: mockInput.links.map(d => Object.create(d)),
       nodes: mockInput.nodes.map(d => Object.create(d))
     };
+    this.renderHelper = Object.create({});
   }
 
   public data: Data;
-  public renderHelper?: Render;
+  public renderHelper: Render;
 
   componentDidMount() {
     const width = 1000;
@@ -35,9 +36,9 @@ export default class App extends React.Component<Props, State> {
     if (!targetNode) {
       throw new Error("Could not found TiKV-2 node, please check mock.json");
     }
-    this.data.nodes.push(newNode);
-    this.data.links.push({ source: newNode, target: targetNode, value: 5 });
-    this.renderHelper && this.renderHelper.reflow();
+    const newLink = { source: newNode, target: targetNode, value: 5 };
+    this.renderHelper.data.nodes.push(newNode);
+    this.renderHelper.data.links.push(newLink);
   };
 
   handleRaftingButtonClick = () => {
@@ -96,7 +97,3 @@ export default class App extends React.Component<Props, State> {
     );
   }
 }
-
-//TODO for debugger, need remove
-// @ts-ignore
-window.d3 = d3;
