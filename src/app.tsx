@@ -4,7 +4,7 @@ import mockInput from "../test/mock/data.json";
 import { getColor, NodeData, TYPE, Data } from "./utils/Constant";
 import { random } from "lodash";
 import Render from "./render/index";
-import Tips from "./Tips";
+import Tips from "./component/Tips";
 import "normalize.css";
 import "../style/index.scss";
 

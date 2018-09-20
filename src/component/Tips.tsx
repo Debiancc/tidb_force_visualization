@@ -1,5 +1,5 @@
 import React from "react";
-import { getColor, getRadius, TYPE } from "./utils/Constant";
+import { getColor, getRadius, TYPE } from "../utils/Constant";
 
 export default () => (
   <div className="tips">

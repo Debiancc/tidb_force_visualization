@@ -93,13 +93,6 @@ export default class Render {
               d.fy = null;
             })
         )
-        .on("click", (self, index, nodes) => {
-          if (!d3.event.active) this.simulation.alphaTarget(0.1).restart();
-          // @ts-ignore
-          self.fx = nodes[0].__data__.x;
-          // @ts-ignore
-          self.fy = nodes[0].__data__.y;
-        })
     };
   };
 
