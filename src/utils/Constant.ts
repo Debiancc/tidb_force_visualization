@@ -62,10 +62,6 @@ export const getRadius = (node: NodeData | any, type?: TYPE | any): number => {
   switch (node ? node.type : type) {
     case TYPE.TIKV_INSTANCE:
       return 10;
-    case TYPE.PD_INSTANCE:
-      return 10;
-    case TYPE.TIDB_INSTANCE:
-      return 10;
     case TYPE.FOLLOW_REGION:
     case TYPE.LEADER_REGION:
     case TYPE.UNUSED_REGION:
