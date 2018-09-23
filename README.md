@@ -15,7 +15,7 @@
 ## Features
 
 - TiDB & PD & TiKV 节点分布关系可视化
-- 数据/视图分离 包装 D3 节点数据实现 observable
+- D3 数据/D3 渲染分离 封装 D3 节点数据类型实现 observable
 - 不同节点流量大小体现
 - 集群节点在线/离线
 - TiKV Leader Regions 选举过程
