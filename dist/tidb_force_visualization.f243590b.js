@@ -84567,7 +84567,6 @@ object-assign
             return _this
           }
           this.data = this.watch(data)
-          // this.data = data;
           this.width = width
           this.height = height
           this.svgElement = d3.select(svgSelector)

@@ -29,3 +29,7 @@
 ## How To Run
 
 `yarn && yarn dev`
+
+或者
+
+[在线体验](https://dist-zwxglefspz.now.sh)
