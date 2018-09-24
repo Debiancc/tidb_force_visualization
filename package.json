@@ -2,7 +2,7 @@
   "name": "tidb_force_visualization",
   "version": "1.1.0",
   "description": "Using d3.force layout to show your tidb cluster info",
-  "main": "src/app.tsx",
+  "main": "dist/index.html",
   "dependencies": {
     "d3": "^5.7.0",
     "lodash": "^4.17.11",
