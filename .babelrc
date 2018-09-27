@@ -1,4 +1,3 @@
 {
-  "presets": ["react"],
-  "plugins": ["babel-jest"]
+  "presets": ["react"]
 }

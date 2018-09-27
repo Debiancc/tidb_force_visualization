@@ -63440,7 +63440,7 @@ object-assign
         'd3-zoom': 'node_modules/d3-zoom/src/index.js',
       },
     ],
-    'test/mock/data.json': [
+    '__tests__/mock/data.json': [
       function(require, module, exports) {
         module.exports = {
           nodes: [
@@ -63541,7 +63541,7 @@ object-assign
       },
       {},
     ],
-    'src/utils/Constant.ts': [
+    'src/utils/Constant.js': [
       function(require, module, exports) {
         'use strict'
 
@@ -84378,7 +84378,7 @@ object-assign
       },
       { buffer: 'node_modules/buffer/index.js' },
     ],
-    'src/render/index.ts': [
+    'src/render/index.js': [
       function(require, module, exports) {
         'use strict'
 
@@ -84577,7 +84577,7 @@ object-assign
         exports.default = Render
       },
       {
-        '../utils/Constant': 'src/utils/Constant.ts',
+        '../utils/Constant': 'src/utils/Constant.js',
         d3: 'node_modules/d3/index.js',
       },
     ],
@@ -84627,7 +84627,7 @@ object-assign
       },
       {
         react: 'node_modules/react/index.js',
-        '../utils/Constant': 'src/utils/Constant.ts',
+        '../utils/Constant': 'src/utils/Constant.js',
       },
     ],
     'node_modules/parcel/src/builtins/bundle-url.js': [
@@ -84803,7 +84803,9 @@ object-assign
         Object.defineProperty(exports, '__esModule', { value: true })
         var react_1 = __importDefault(require('react'))
         var d3 = __importStar(require('d3'))
-        var data_json_1 = __importDefault(require('../test/mock/data.json'))
+        var data_json_1 = __importDefault(
+          require('../__tests__/mock/data.json')
+        )
         var Constant_1 = require('./utils/Constant')
         var lodash_1 = require('lodash')
         var index_1 = __importDefault(require('./render/index'))
@@ -84948,10 +84950,10 @@ object-assign
       {
         react: 'node_modules/react/index.js',
         d3: 'node_modules/d3/index.js',
-        '../test/mock/data.json': 'test/mock/data.json',
-        './utils/Constant': 'src/utils/Constant.ts',
+        '../__tests__/mock/data.json': '__tests__/mock/data.json',
+        './utils/Constant': 'src/utils/Constant.js',
         lodash: 'node_modules/lodash/lodash.js',
-        './render/index': 'src/render/index.ts',
+        './render/index': 'src/render/index.js',
         './component/Tips': 'src/component/Tips.tsx',
         'normalize.css': 'node_modules/normalize.css/normalize.css',
         '../style/index.scss': 'style/index.scss',
@@ -85016,7 +85018,7 @@ object-assign
           var hostname = '' || location.hostname
           var protocol = location.protocol === 'https:' ? 'wss' : 'ws'
           var ws = new WebSocket(
-            protocol + '://' + hostname + ':' + '61874' + '/'
+            protocol + '://' + hostname + ':' + '63834' + '/'
           )
           ws.onmessage = function(event) {
             var data = JSON.parse(event.data)
