@@ -7,6 +7,7 @@ import Render from './render/index'
 import Tips from './component/Tips'
 import 'normalize.css'
 import '../style/index.scss'
+import { Provider } from './store'
 
 interface Props {}
 
@@ -76,7 +77,7 @@ export default class App extends React.Component<Props, State> {
 
   render() {
     return (
-      <React.Fragment>
+      <Provider>
         <div className="operation">
           <button onClick={this.handleAddRegionButtonClick}>Add Region</button>
           <button onClick={this.handleRegionSyncButtonClick}>
@@ -86,7 +87,7 @@ export default class App extends React.Component<Props, State> {
         </div>
         <Tips />
         <svg width="1000" height="600" />
-      </React.Fragment>
+      </Provider>
     )
   }
 }
