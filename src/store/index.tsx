@@ -22,8 +22,8 @@ export const Provider = (props: any) => {
   return <Store.Provider value={initialValue}>{props.children}</Store.Provider>
 }
 
-export const withContext = (Component: any) => {
-  return (props: any) => {
+export const withContext = <T extends {}>(Component: any) => {
+  return (props: T) => {
     return (
       <Store.Consumer>
         {store => <Component {...props} {...store} />}

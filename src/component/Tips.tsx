@@ -6,7 +6,7 @@ interface Props {
   nodeTypes: { key: string; value: string }[]
 }
 
-export default withContext((props: Props, context: any) => {
+export default withContext<Props>((props: Props, context: any) => {
   debugger
   return (
     <div className="tips">
