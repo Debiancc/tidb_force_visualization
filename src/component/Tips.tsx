@@ -1,26 +1,33 @@
-import React from "react";
-import { getColor, getRadius, TYPE } from "../utils/Constant";
+import React from 'react'
+import { getColor, getRadius, TYPE } from '../utils/Constant'
+import { withContext } from '../store'
 
-export default () => (
-  <div className="tips">
-    {Object.keys(TYPE).map(type => {
-      // @ts-ignore
-      const _type = TYPE[type];
-      const color = getColor(null, _type);
-      const radius = getRadius(null, _type);
-      const pointStyle = {
-        width: radius * 2,
-        height: radius * 2,
-        backgroundColor: color
-      };
-      return (
-        <div className="row" key={`tips-row-${type}`}>
-          <div className="point">
-            <div style={pointStyle} />
+interface Props {
+  nodeTypes: { key: string; value: string }[]
+}
+
+export default withContext((props: Props, context: any) => {
+  debugger
+  return (
+    <div className="tips">
+      {props.nodeTypes.map(({ key, value }) => {
+        // @ts-ignore
+        const color = getColor(null, value)
+        const radius = getRadius(null, value)
+        const pointStyle = {
+          width: radius * 2,
+          height: radius * 2,
+          backgroundColor: color,
+        }
+        return (
+          <div className="row" key={`tips-row-${key}`}>
+            <div className="point">
+              <div style={pointStyle} />
+            </div>
+            <div className="text">{key}</div>
           </div>
-          <div className="text">{type}</div>
-        </div>
-      );
-    })}
-  </div>
-);
+        )
+      })}
+    </div>
+  )
+})
