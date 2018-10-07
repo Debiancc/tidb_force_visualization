@@ -6,7 +6,9 @@ import {
   NodeData,
   SvgChild,
 } from '../utils/Constant'
-import * as d3 from 'd3'
+import * as d3 from 'd3-selection'
+import * as d3Drag from 'd3-drag'
+import * as d3Force from 'd3-force'
 
 /**
  * Render class
@@ -24,7 +26,7 @@ export default class Render {
     this.svgChilds = this.initNode()
   }
 
-  public readonly simulation: d3.Simulation<NodeData, undefined>
+  public readonly simulation: d3Force.Simulation<NodeData, undefined>
   public data: Data
 
   private readonly svgChilds: SvgChild
@@ -77,7 +79,7 @@ export default class Render {
           return id.join('-')
         })
         .call(
-          d3
+          d3Drag
             .drag<SVGCircleElement, NodeData>()
             .on('start', d => {
               if (!d3.event.active) this.simulation.alphaTarget(0.1).restart()
@@ -98,17 +100,17 @@ export default class Render {
   }
 
   private initLayout = () => {
-    return d3
+    return d3Force
       .forceSimulation<NodeData>(this.data.nodes)
       .force(
         'link',
-        d3
+        d3Force
           .forceLink<NodeData, LinkData>(this.data.links)
           .id(d => d.id)
           .distance(20)
       )
-      .force('charge_force', d3.forceManyBody().strength(-100))
-      .force('center', d3.forceCenter(this.width / 2, this.height / 2))
+      .force('charge_force', d3Force.forceManyBody().strength(-100))
+      .force('center', d3Force.forceCenter(this.width / 2, this.height / 2))
       .on('tick', () => {
         if (!this.svgChilds.link || !this.svgChilds.node) return
         const self = this
@@ -162,7 +164,7 @@ export default class Render {
     this.simulation.nodes(this.data.nodes)
     this.simulation.force(
       'link',
-      d3
+      d3Force
         .forceLink<NodeData, LinkData>(this.data.links)
         .id(d => d.id)
         .distance(20)
