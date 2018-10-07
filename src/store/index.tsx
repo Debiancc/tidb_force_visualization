@@ -1,13 +1,6 @@
 import * as React from 'react'
 import { TYPE } from '../utils/Constant'
-import {
-  ReactChild,
-  ReactChildren,
-  ReactElement,
-  ReactInstance,
-  ReactNode,
-  ReactPropTypes,
-} from 'react'
+import { Component, ReactElement, StatelessComponent } from 'react'
 
 const initialValue = {
   nodeTypes: Object.keys(TYPE).map(key => {
@@ -22,8 +15,14 @@ export const Provider = (props: any) => {
   return <Store.Provider value={initialValue}>{props.children}</Store.Provider>
 }
 
-export const withContext = <T extends {}>(Component: any) => {
-  return (props: T) => {
+interface Store {
+  [key: string]: any
+}
+
+export const withContext = <T extends Store>(
+  Component: StatelessComponent<T>
+) => {
+  return (props: T): any => {
     return (
       <Store.Consumer>
         {store => <Component {...props} {...store} />}
